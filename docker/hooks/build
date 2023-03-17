@@ -1,0 +1,10 @@
+#!/bin/bash
+set -ex
+
+docker image build \
+    --build-arg username=dockerman \
+    --build-arg uid=9999 \
+    --build-arg gid=999 \
+    --tag "$DOCKER_REPO:latest" \
+    --file Dockerfile \
+    ../
