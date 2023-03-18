@@ -1,11 +1,7 @@
 docker container run \
   --rm \
   --tty \
-  --volume ${pwd}/bin:/home/$USER/app/bin \
-  --volume ${pwd}/data:/home/$USER/app/data \
-  --volume ${pwd}/doc:/home/$USER/app/doc \
-  --volume ${pwd}/notebooks:/home/$USER/app/notebooks \
-  --volume ${pwd}/results:/home/$USER/app/results \
-  --volume ${pwd}/src:/home/$USER/app/src \
+  --volume ${pwd}/data:/home/dockerman/app/data \
+  --volume ${pwd}/notebooks:/home/dockerman/app/notebooks \
   --publish 8888:8888 \
   test:1.0

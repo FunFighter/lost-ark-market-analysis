@@ -59,6 +59,15 @@ ENV PROJECT_DIR $HOME/app
 RUN mkdir $PROJECT_DIR
 WORKDIR $PROJECT_DIR
 
+# refactor this after I get some sleep
+RUN mkdir $HOME/app/notebooks
+USER root
+COPY notebooks/* /home/dockerman/app/notebooks
+RUN chown -R $UID:$GID /home/dockerman/app/notebooks && \
+    chmod -R u+x /home/dockerman/app/notebooks
+# Switch to non-root user
+USER $USER
+
 # build the conda environment
 ENV ENV_PREFIX $PROJECT_DIR/env
 RUN conda update --name base --channel defaults conda && \
