@@ -3,5 +3,6 @@ docker image build \
 --build-arg username=dockerman \
 --build-arg uid=1000 \
 --build-arg gid=100 \
---file ./docker/Dockerfile \
-  ../
+--file Dockerfile \
+-t test:1.0 \
+../
