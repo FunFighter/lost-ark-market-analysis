@@ -60,13 +60,13 @@ RUN mkdir $PROJECT_DIR
 WORKDIR $PROJECT_DIR
 
 # refactor this after I get some sleep
-RUN mkdir $HOME/app/notebooks
-USER root
-COPY notebooks/* /home/dockerman/app/notebooks
-RUN chown -R $UID:$GID /home/dockerman/app/notebooks && \
-    chmod -R u+x /home/dockerman/app/notebooks
-# Switch to non-root user
-USER $USER
+# RUN mkdir $HOME/app/notebooks
+# USER root
+# COPY notebooks/* /home/dockerman/app/notebooks
+# RUN chown -R $UID:$GID /home/dockerman/app/notebooks && \
+#     chmod -R u+x /home/dockerman/app/notebooks
+# # Switch to non-root user
+# USER $USER
 
 # build the conda environment
 ENV ENV_PREFIX $PROJECT_DIR/env
@@ -83,4 +83,4 @@ RUN conda activate $ENV_PREFIX && \
 ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
 
 # Launch jupyterlab server
-CMD ["jupyter","lab","--no-browser","--ip","0.0.0.0"]
+CMD ["sudo","jupyter","lab","--no-browser","--ip","0.0.0.0"]
